@@ -1,6 +1,6 @@
 import express from 'express';
-import { createTodo, updateTodo } from './types';
-import { Todo } from './db';
+import { createTodo, updateTodo } from './types.js';
+import { Todo } from './db.js';
 
 const app = express();
 const PORT = 3000;
