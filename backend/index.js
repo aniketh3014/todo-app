@@ -20,7 +20,7 @@ app.post("/todo", async (req, res) => {
     try{
         await Todo.create({
             title: bodyPayload.title,
-            description: bodyPayload.description,
+            discription: bodyPayload.discription,
             completed: false
         })
         res.json({
@@ -48,10 +48,17 @@ app.put("/completed", async (req, res) => {
         });
         return;
     }
-    await Todo.update({_id: bodyPayload.id}, {completed: true});
-    res.json({
+    try {
+        await Todo.updateOne({_id: bodyPayload.id}, {completed: true});
+        res.json({
         messege: "Todo updated"
-    })
+        })
+    } catch {
+        res.status(500).json({
+            messege: "something went wrong updation the todo"
+        })
+    }
+    
 })
 
 app.listen(PORT, () => {
