@@ -1,11 +1,12 @@
 import express from 'express';
 import { createTodo, updateTodo } from './types.js';
 import { Todo } from './db.js';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3000;
 app.use(express.json());
-
+app.use(cors());
 
 
 app.post("/todo", async (req, res) => {
