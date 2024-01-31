@@ -29,7 +29,7 @@ export function Todos({todos}){
 
     return <div style={containerStyle}>
         {todos.map(function (todo) {
-            return <div style={todoStyle}>
+            return <div key={todo._id} style={todoStyle}>
                 <h2>{todo.title}</h2>
                 <h3> {todo.discription} </h3>
                 <button style={buttonStyle}> {todo.completed == true ? "Done" : "Mark as done"} </button>
